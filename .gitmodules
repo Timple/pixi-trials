@@ -1,0 +1,5 @@
+[submodule "pf_driver/pf_driver/pf_lidar_ros2_driver"]
+	path = pf_driver/pf_driver/pf_lidar_ros2_driver
+	# until: https://github.com/PepperlFuchs/pf_lidar_ros2_driver/pull/43
+	url = https://github.com/nobleo/pf_lidar_ros2_driver.git
+	branch = boost-1.86+

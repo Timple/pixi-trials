@@ -1,0 +1,44 @@
+# Copyright (C) 2026 Nobleo Autonomous Solutions B.V.
+
+[workspace]
+preview = ["pixi-build"]
+channels = [
+  "https://prefix.dev/conda-forge",
+]
+platforms = ["linux-64", "linux-aarch64"]
+
+[environments]
+default = ["kilted"]
+kilted = ["kilted"]
+
+[dependencies]
+ccache = "*"
+colcon-common-extensions = "*"
+colcon-ros-domain-id-coordinator = "*"  # Allows for parallel testing using multiple ROS domains
+pytest = ">=7,<8"  # Compatibility with launch_pytest
+
+[feature.kilted]
+channels = ["robostack-kilted"]
+
+[feature.kilted.dev]
+ros-kilted-pf-driver = { path = "pf_driver" }
+ros-kilted-pf-interfaces = { path = "pf_driver/pf_lidar_ros2_driver/src/pf_interfaces/package.xml" }
+ros-kilted-pf-description = { path = "pf_driver/pf_lidar_ros2_driver/src/pf_description/package.xml" }
+
+[feature.kilted.dependencies]
+ros-kilted-rmw-zenoh-cpp = "*"
+ros-kilted-ros-core = "*"
+
+[activation]
+scripts = ["install/setup.bash"]
+
+[activation.env]
+PYTHONNOUSERSITE = "1"  # Do not take user site-packages into account
+RMW_IMPLEMENTATION = "rmw_zenoh_cpp"
+CMAKE_C_COMPILER_LAUNCHER = "ccache"
+CMAKE_CXX_COMPILER_LAUNCHER = "ccache"
+
+[tasks]
+build = """
+  colcon build --cmake-args -DCMAKE_CXX_FLAGS=-O2
+"""
