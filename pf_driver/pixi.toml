@@ -16,6 +16,7 @@ ccache = "*"
 colcon-common-extensions = "*"
 colcon-ros-domain-id-coordinator = "*"  # Allows for parallel testing using multiple ROS domains
 pytest = ">=7,<8"  # Compatibility with launch_pytest
+eigen = "<4"
 
 [feature.kilted]
 channels = ["robostack-kilted"]
@@ -34,7 +35,6 @@ scripts = ["install/setup.bash"]
 
 [activation.env]
 PYTHONNOUSERSITE = "1"  # Do not take user site-packages into account
-RMW_IMPLEMENTATION = "rmw_zenoh_cpp"
 CMAKE_C_COMPILER_LAUNCHER = "ccache"
 CMAKE_CXX_COMPILER_LAUNCHER = "ccache"
 

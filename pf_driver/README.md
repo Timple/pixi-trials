@@ -8,3 +8,9 @@ In file included from /home/tim/ros/uvee/system/.pixi/envs/default/src/gtest_ven
 ```
 
 These settings do work on ubuntu 24.04 with ROS2 Jazzy & Kilted without pixi.
+
+Try with
+
+```
+docker build .
+```
