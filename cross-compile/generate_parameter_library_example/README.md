@@ -1,11 +1,11 @@
 What works (on an x86_64 machine):
 
 ```
-pixi build --target-platform linux-aarch64
+pixi build
 ```
 
 What doesn't work:
 
 ```
-pixi build
+pixi build --target-platform linux-aarch64
 ```
