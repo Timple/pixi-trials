@@ -1,0 +1,29 @@
+
+[workspace]
+preview = ["pixi-build"]
+channels = [
+  "https://prefix.dev/pixi-build-backends",
+  "https://prefix.dev/conda-forge",
+  "robostack-kilted"
+]
+platforms = ["linux-64", "linux-aarch64"]
+
+[package.build]
+backend = { name = "pixi-build-ros", version = "*" }
+
+[package.build.source]
+git = "https://github.com/Ekumen-OS/beluga"
+subdirectory = "beluga"
+# Not working:
+branch = "main"
+# rev = "ffe41b90"  # Last main at time of writing
+# Working:
+# git = "https://github.com/nobleo/beluga"
+# branch = no-wall
+
+[[package.build.config.extra-package-mappings]]
+eigen = { conda = ["eigen <4"] }
+libgmock-dev = { conda = ["gmock"] }
+libhdf5-dev = { conda = ["hdf5 <2"] }
+range-v3 = { conda = ["range-v3"] }
+sophus = { conda = ["sophus"] }
